@@ -1,13 +1,11 @@
-import { createSelector } from '@ngrx/store';
-
 // reducers
+import { BoardAdapter } from 'src/store/reducers/board.reducer';
 
 // modlels
 import { AppState } from './../reducers';
 
 export const selectBoard = (state: AppState) => state.board;
 
-export const selectAllBoards = createSelector(
-  selectBoard,
-  (state) => state.boardList
-);
+const { selectAll } = BoardAdapter.getSelectors();
+
+export const selectAllBoards = selectAll;
